@@ -141,6 +141,18 @@ Suitable as a starting point for:
 - Contact data-quality reporting
 - Python automation demonstrations
 
+## Screenshots
+
+### Web App
+![Web App](assets/screenshots/web-ui.png)
+
+### Cleaned Data Output
+![Cleaned Data](assets/screenshots/cleaned-data.png)
+
+### Quality Summary
+![Quality Summary](assets/screenshots/quality-summary.png)
+
+
 ## Author
 
 GitHub: https://github.com/shsiddiqui-ai
