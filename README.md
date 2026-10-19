@@ -1,37 +1,146 @@
-# Smart CSV & Excel Data Cleaner (Portfolio Project 1)
 
-A Python starter tool that reads CSV/XLSX contact data, normalizes whitespace and email case, removes **exact duplicates after normalization**, checks email/phone **formats only**, and exports a clean CSV/XLSX file.
+# Smart CSV & Excel Data Cleaner
 
-## Windows PowerShell setup
+A Python and Flask application that automatically cleans contact data, removes duplicate records, validates basic contact formats, and generates professional Excel quality reports.
 
-```powershell
-cd D:\Python-Projects
-mkdir smart-csv-excel-cleaner
-# Extract the downloaded ZIP contents into D:\Python-Projects\smart-csv-excel-cleaner
-cd D:\Python-Projects\smart-csv-excel-cleaner
-py -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe cleaner.py
+## Features
+
+- Upload CSV and Excel (.xlsx) files
+- Clean unnecessary spaces
+- Standardize email capitalization
+- Normalize phone number formatting
+- Remove exact duplicate contact records
+- Identify missing or incorrectly formatted emails
+- Identify missing or incorrectly formatted phone numbers
+- Generate a formatted Excel workbook
+- Generate a separate CSV quality report
+- Use a simple Flask web dashboard
+- Basic protection against spreadsheet formula injection
+- Automated unit tests
+
+## Technology Stack
+
+- Python
+- Pandas
+- OpenPyXL
+- Flask
+- unittest
+
+## Example Results
+
+Tested with 1,020 synthetic contact records:
+
+| Metric | Result |
+|---|---:|
+| Input records | 1,020 |
+| Duplicate records removed | 21 |
+| Unique output records | 999 |
+| Remaining exact duplicates | 0 |
+
+The test dataset is synthetic and contains no real customer contacts.
+
+## Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/shsiddiqui-ai/smart-csv-excel-cleaner.git
+cd smart-csv-excel-cleaner
 ```
 
-The last command creates `output/cleaned_contacts.xlsx` and shows summary counts.
+Create a virtual environment:
 
-To run your own file (with the four expected columns Name, Email, Phone, City):
-
-```powershell
-.\.venv\Scripts\python.exe cleaner.py --input "input/myfile.csv" --output "output/myfile_cleaned.xlsx"
+```bash
+python -m venv .venv
 ```
 
-## Limitations of v1
+Install dependencies:
 
-- No external identity, email deliverability, phone activity, Truecaller, or WhatsApp checks.
-- Duplicate rule is **exact match on Name + Email + Phone + City after normalization**. Fuzzy duplicates are not yet supported.
-- Does not modify the source file.
-- Sample contacts are fictional.
+```bash
+pip install -r requirements.txt
+```
 
-## Planned extensions
+## Web Dashboard
 
-1. Multiple deduplication rules (email, phone, or fuzzy review).
-2. Invalid-row review report, Excel styling, and automated tests.
-3. Flask drag-and-drop upload/download interface.
-4. README screenshots, short recorded demo, GitHub portfolio page.
+Start the Flask application:
+
+```bash
+python app.py
+```
+
+Open:
+
+http://127.0.0.1:5001
+
+Upload a CSV or XLSX contact file.
+
+Required columns:
+
+- Name
+- Email
+- Phone
+- City
+
+The dashboard downloads a cleaned Excel workbook with:
+
+1. Cleaned Data
+2. Quality Summary
+
+Maximum upload size: 10 MB.
+
+## Command-Line Usage
+
+Run with the provided fictional sample:
+
+```bash
+python cleaner.py
+```
+
+Process your own file:
+
+```bash
+python cleaner.py --input input/sample_contacts.csv --output output/cleaned_contacts.xlsx
+```
+
+The command-line version creates a cleaned workbook and a separate CSV quality report.
+
+## Automated Testing
+
+Run:
+
+```bash
+python -m unittest tests.test_cleaner -v
+```
+
+Eight tests cover file creation, normalization, duplicate removal, format checks, missing columns, and report generation.
+
+## Important Limitations
+
+- Email validation checks syntax only. It does not verify deliverability.
+- Phone validation checks basic syntax only. It does not verify active numbers.
+- Duplicate detection uses exact matches across Name, Email, Phone and City after normalization.
+- Fuzzy matching is not currently supported.
+- This is a portfolio demonstration, not a production-ready public file-processing service.
+- Spreadsheet safety controls are basic and require further security testing before public deployment.
+
+## Planned Improvements
+
+- Advanced duplicate detection
+- Additional data-quality rules
+- More upload security tests
+- Processing statistics displayed on the web dashboard
+- Dashboard screenshots and video demonstration
+
+## Use Cases
+
+Suitable as a starting point for:
+
+- CRM contact-list cleanup
+- Spreadsheet data standardization
+- Duplicate record detection
+- Contact data-quality reporting
+- Python automation demonstrations
+
+## Author
+
+GitHub: https://github.com/shsiddiqui-ai
