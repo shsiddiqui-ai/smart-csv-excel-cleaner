@@ -1,0 +1,35 @@
+# Python virtual environment
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Generated output files
+output/*
+!output/.gitkeep
+
+# Test input files
+input/test_1000_contacts.csv
+
+# Temporary Excel files
+~$*
+*.tmp
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local databases and logs
+*.db
+*.sqlite3
+*.log
